@@ -14,6 +14,13 @@ printf( "%d", a+b+c);
 
 printf("%d", b-c);
 
+//szorzas
+
+printf("%d", a*c);
+
+//osztas
+
+printf("%d", b/a);
 return 0;
 }
 
