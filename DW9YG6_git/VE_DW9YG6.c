@@ -8,7 +8,7 @@ c=6;
 
 //osszeadas
 
-printf( "%d", a+b+c);
+printf( "%d", a+c);
 
 //kivonas
 
