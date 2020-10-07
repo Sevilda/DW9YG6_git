@@ -8,7 +8,7 @@ int b = 5;
 printf("Not-a-calculator\n");
 
 printf("Addition: \n");
-printf("%d\n", a+b);
+printf("%d\n", a+b+b);
 
 return 0;
 }
