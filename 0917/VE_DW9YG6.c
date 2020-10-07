@@ -7,9 +7,11 @@ int b = 2;
 
 printf("Not-a-calculator\n");
 
-
 printf("Subtraction\n");
 printf("%d\n", a-a-b);
+
+printf("Multiplication\n");
+printf("%d\n", a*a*b);
 
 printf("Division:\n");
 printf("%d\n,", a/a);
