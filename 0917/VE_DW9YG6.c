@@ -5,10 +5,10 @@ int main() {
 int a = 10;
 int b = 5;
 
-printf("Not-a-calculator");
+printf("Not-a-calculator\n");
 
-printf("Addition: ");
-printf("%d", a+b)
+printf("Addition: \n");
+printf("%d\n", a+b);
 
 return 0;
 }
