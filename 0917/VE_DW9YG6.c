@@ -6,6 +6,9 @@ int a = 10;
 int b = 2;
 
 printf("Not-a-calculator\n");
+  
+printf("Addition: \n");
+printf("%d\n", a+b+b);
 
 printf("Subtraction\n");
 printf("%d\n", a-a-b);
