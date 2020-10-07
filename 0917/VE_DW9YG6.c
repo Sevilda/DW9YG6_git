@@ -12,7 +12,7 @@ printf("Subtraction\n");
 printf("%d\n", a-b);
 
 printf("Division:\n");
-printf("%d\n,", a/b);
+printf("%d\n,", a/a);
 
 return 0;
 }
