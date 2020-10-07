@@ -3,13 +3,13 @@
 int main() {
 
 int a = 10;
-int b = 5;
+int b = 2;
 
-printf("Not-a-calculator");
+printf("Not-a-calculator\n");
 
 
-printf("Subtraction");
-printf("%d", a-b);
+printf("Subtraction\n");
+printf("%d\n", a-b);
 
 return 0;
 }
