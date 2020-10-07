@@ -8,8 +8,11 @@ int b = 5;
 printf("Not-a-calculator");
 
 
-printf("Subtraction");
-printf("%d", a-b);
+printf("Subtraction\n");
+printf("%d\n", a-b);
+
+printf("Multiplication\n");
+printf("%d\n", a*b);
 
 return 0;
 }
