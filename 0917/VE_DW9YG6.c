@@ -7,5 +7,8 @@ int b = 5;
 
 printf("Not-a-calculator");
 
+printf("Addition: ");
+printf("%d", a+b)
+
 return 0;
 }
