@@ -29,6 +29,7 @@ public class View {
 		System.out.println("Your current balance is " + bp.getBalance() + " " + bp.getCurrency() + ".");
 	}
 
+	//This should be in a helper class
 	public void printRooms(ArrayList<Hotel> hotels) {
 		int i = 0;
 		for (Hotel h : hotels) {
@@ -48,7 +49,6 @@ public class View {
 	}
 
 	// no Room class yet.
-
 	public Room selectRoom(ArrayList<Hotel> hotels, int chosen) {
 		Room selectedR=null;
 		int i=0;
@@ -103,3 +103,4 @@ public class View {
 			System.out.println(r.toString());
 	}
 }
+//ArrayList not part of the documentation
