@@ -1,29 +1,18 @@
 package com.meiit.webalk.reservation.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
-//Static is not need
+
 public class BookingPerson extends User {
 
-<<<<<<< HEAD
-	//missing field
-	private static int accountNumber; // bank number? id? //not id 
-	private static int balance; //Wrong type
-	private static Date birth;  //Wrong type
-	private static Currency curr;
-
-	//What is this?? inheritence?? OOP??
-	private static String email;
-	private static String pw;
-=======
 	private String name;
 	private int accountNumber;
-	private int balance;
+	private BigDecimal balance;
 	private Date birth;
 	private Currency curr;
 
->>>>>>> missing res, todos.
 
-	public BookingPerson(String n, int b, Currency c) {
+	public BookingPerson(String n, BigDecimal b, Currency c) {
 		setName(n);
 		setBalance(b);
 		setCurrency(c);
@@ -33,11 +22,11 @@ public class BookingPerson extends User {
 		return ("nev: " + name + " email " + email + "curr: " + curr);
 	}
 
-	public int getBalance() {
+	public BigDecimal getBalance() {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
+	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	};
 	

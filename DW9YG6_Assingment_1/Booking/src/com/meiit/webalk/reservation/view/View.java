@@ -1,5 +1,6 @@
 package com.meiit.webalk.reservation.view;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,7 +21,7 @@ public class View implements IView {
 		System.out.println("What is your name?");
 		String name = sc.nextLine().toString();
 		System.out.println("What is your account balance?");
-		int balance = Integer.parseInt(sc.nextLine());
+		BigDecimal balance = BigDecimal.valueOf(Long.valueOf(sc.nextLine()));
 		System.out.println("What is your currency type?");
 		Currency curr = (Currency.valueOf(sc.nextLine().toUpperCase()));
 		bp = new BookingPerson(name, balance, curr);
@@ -95,8 +96,8 @@ public class View implements IView {
 		return room;
 	}
 
-	public void printReservationSaved(ReservationService res) {
-		System.out.println(res.toString());
+	public void printReservationSaved() {
+		System.out.println("Reservation successfully saved");
 	}
 
 	public void printNotEnoughBalance(BookingPerson bp) {

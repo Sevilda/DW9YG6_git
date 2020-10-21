@@ -10,9 +10,6 @@
 
 package com.meiit.webalk.reservation;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import com.meiit.webalk.reservation.domain.Reservation;
 import com.meiit.webalk.reservation.domain.Room;
 import com.meiit.webalk.reservation.service.ReservationService;
@@ -20,15 +17,14 @@ import com.meiit.webalk.reservation.view.View;
 
 public class App {
 
-	ReservationService res;
+	ReservationService reservationService;
 	App app;
 	View view;
-	static List<ReservationService> reservations = new ArrayList<ReservationService>();
 
-	public static void main(String[] args) {		
-		
+	public static void main(String[] args) {
+
 		try {
-			App app=new App(new ReservationService(), new View());
+			App app = new App(new ReservationService(), new View());
 			app.createBookingPerson();
 			app.book();
 			app.checkIn();
@@ -37,27 +33,31 @@ public class App {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-	
+
 	}
 
 	public App(ReservationService res, View view) {
-		this.res=res;
-		this.view=view;		
+		this.reservationService = res;
+		this.view = view;
 	}
 
 	public void createBookingPerson() {
-			res.saveBookingPerson(view.readBookingPerson());
+		reservationService.saveBookingPerson(view.readBookingPerson());
 	}
 
 	public void book() {
-		Room r=null;
-		while (r==null) {
-				r=view.selectRoom(res.findAllHotels());
-				if (r!=null) 
-				res.saveReservation(new Reservation(res.findBookingPerson().getName(), r));
-		};
-		
+		Room r = null;
+		while (r == null) {
+			r = view.selectRoom(reservationService.findAllHotels());
+			if (r != null) {
+				reservationService.saveReservation(new Reservation(reservationService.findBookingPerson().getName(), r));
+				view.printReservationSaved();
+			}
+	
+			
+		}
+		;
+
 	}
 
 	public void checkIn() {
@@ -67,6 +67,5 @@ public class App {
 	public void checkOut() {
 		view.printCheckOut();
 	}
-
 
 }

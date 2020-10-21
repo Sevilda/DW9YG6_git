@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Hotel {
 	
-	private int id; 
 	private String name;
 	private String address;
 	private int stars;
@@ -27,7 +26,6 @@ public class Hotel {
 	}
 
 	public Hotel(int id, String n, String a, int s, List<Floor> floors) {
-		this.id=id;
 		this.name=n;
 		this.address=a;
 		this.stars=s;
@@ -35,10 +33,9 @@ public class Hotel {
 	}
 	
 	
-
 	@Override
 	public String toString() {
-		return id + ", Hotel name: " + name + " stars: " + stars;
+		return "Hotel name: " + name + " stars: " + stars;
 	}
 	
 	
