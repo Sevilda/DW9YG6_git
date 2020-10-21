@@ -13,8 +13,10 @@ import com.meiit.webalk.reservation.domain.Wing;
 import com.meiit.webalk.reservation.service.Reservation;
 import com.meiit.webalk.reservation.service.ReservationService;
 
+//Where is the provided interface?
 public class View {
 
+	//Please implement this method this is not acceptable based on the documentation
 	public static BookingPerson readBookingPerson() {
 		return null;
 	}
@@ -77,15 +79,19 @@ public class View {
 
 	}
 
+	//Please follow the documentation 
 	public void printCheckIn(ReservationService res) {
 		if (res.getStatus(res) == Status.valueOf("ACTIVE"))
+			//This is not part of the expected output
 			System.out.println("Ready to check in!");
 		else if (res.getStatus(res) == Status.valueOf("BOOKED"))
+			//This is not part of the expected output
 			System.out.println("Your check in will be available soon TM");
 
 	}
 
 	public void printCheckOut(BookingPerson bp, ReservationService res) {
+		//This is not part of the expected output
 		if (res.getStatus(res) == Status.valueOf("PROCESSED")) {
 			System.out.println("Your checkout has been processed. \n" + "Your new balance is " + bp.getBalance());
 		}
