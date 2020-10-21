@@ -1,14 +1,16 @@
 package com.meiit.webalk.reservation.domain;
 
 import java.util.Date;
-
+//Static is not need
 public class BookingPerson extends User {
 
-	private static int accountNumber; // bank number? id?
-	private static int balance;
-	private static Date birth;
+	//missing field
+	private static int accountNumber; // bank number? id? //not id 
+	private static int balance; //Wrong type
+	private static Date birth;  //Wrong type
 	private static Currency curr;
 
+	//What is this?? inheritence?? OOP??
 	private static String email;
 	private static String pw;
 
