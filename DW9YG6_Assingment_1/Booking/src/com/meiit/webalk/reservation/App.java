@@ -16,12 +16,14 @@ import com.meiit.webalk.reservation.service.ReservationService;
 import com.meiit.webalk.reservation.view.View;
 
 public class App {
+	//use private Static is not need in here, also follow the documentation most of this field shoud not be here
 	static BookingPerson bp;
 	static ReservationService res;
 	static App app;
 	static View view;
 	static Scanner sc;
 
+	//Use List<> based on the documentation
 	static ArrayList<Room> rooms = new ArrayList<Room>();
 	static ArrayList<Wing> wings = new ArrayList<Wing>();
 	static ArrayList<Floor> floors = new ArrayList<Floor>();
@@ -29,9 +31,9 @@ public class App {
 	static ArrayList<ReservationService> reservations = new ArrayList<ReservationService>();
 
 	public static void main(String[] args) {
-
+		//Scanner shoud be in the view
 		sc = new Scanner(System.in);
-
+		
 		rooms.add(0, new Room(1, 2, true, 500, WingType.EAST));
 		rooms.add(1, new Room(6, 4, false, 1000, WingType.EAST));
 
@@ -41,10 +43,12 @@ public class App {
 		floors.add(new Floor(2, 1, wings));
 
 		hotels.add(new Hotel(1, "Hilton", "MiddleOf St. Nowh Ere 16.", 5, floors));
-
+		//Thats good with this you dont need to use static in the service and view
+		-----
 		res = new ReservationService();
 		view = new View();
 		app = new App(res, view);
+		---
 	}
 
 	public App(ReservationService res, View view) {
@@ -63,7 +67,7 @@ public class App {
 	}
 
 	public void createBookingPerson() {
-
+		//All System.out.println and  sc.nextLine().toString(); should be in the view
 		System.out.println("What is your name?");
 		String name = sc.nextLine().toString();
 		System.out.println("What is your account balance?");
@@ -74,6 +78,7 @@ public class App {
 	}
 
 	public void book() {
+		//All System.out.println and  sc.nextLine().toString(); should be in the view
 		boolean done=false;
 		while (!done) {
 		
