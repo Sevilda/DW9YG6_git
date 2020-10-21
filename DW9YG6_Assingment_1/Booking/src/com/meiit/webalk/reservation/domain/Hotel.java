@@ -3,11 +3,12 @@ package com.meiit.webalk.reservation.domain;
 import java.util.List;
 
 public class Hotel {
-	
+	//Id is not part of the task! YAGNI
 	private int id; 
 	private String name;
 	private String address;
 	private int stars;
+	//Maybe private??? or something?
 	List<Floor> floorList;
 	
 	public List<Floor> getFloorList() {
