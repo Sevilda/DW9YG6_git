@@ -22,36 +22,36 @@ public class Room {
 		return "Number: " + number + "Beds: " + beds + "Price: " + price;
 	}
 
-	public static int getNumber(Room r) {
-		return r.number;
+	public int getNumber() {
+		return this.number;
 	}
 
-	public static void setNumber(int number, Room r) {
-		r.number = number;
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
-	public static int getPrice(Room r) {
-		return r.price;
+	public int getPrice() {
+		return this.price;
 	}
 
-	public static void setPrice(int price, Room r) {
-		r.price = price;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
-	public static boolean isBalcon(Room r) {
-		return r.balcon;
+	public boolean isBalcon() {
+		return this.balcon;
 	}
 
-	public static void setBalcon(boolean balcon, Room r) {
-		r.balcon = balcon;
+	public void setBalcon(boolean balcon) {
+		this.balcon = balcon;
 	}
 
-	public static int getBeds(Room r) {
-		return r.beds;
+	public int getBeds() {
+		return this.beds;
 	}
 
-	public static void setBeds(int beds, Room r) {
-		r.beds = beds;
+	public void setBeds(int beds) {
+		this.beds = beds;
 	}
 	
 }

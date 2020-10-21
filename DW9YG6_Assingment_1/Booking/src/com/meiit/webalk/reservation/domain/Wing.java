@@ -1,6 +1,6 @@
 package com.meiit.webalk.reservation.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Wing {
 	
@@ -8,27 +8,27 @@ public class Wing {
 	private String description;
 	private WingType wingType;
 	private int floorNumber;
-	private ArrayList<Room> rooms;
+	private List<Room> rooms;
 	
-	public Wing (WingType wt, ArrayList<Room> rs) {
+	public Wing (WingType wt, List<Room> rs) {
 		wingType=wt;
 		rooms=rs;		
 	}
 
-	public static ArrayList<Room> getRooms(Wing w) {
-		return w.rooms;
+	public List<Room> getRooms() {
+		return this.rooms;
 	}
 
-	public static void setRooms(ArrayList<Room> rooms, Wing w) {
-		w.rooms = rooms;
+	public void setRooms(List<Room> rooms) {
+		this.rooms = rooms;
 	}
 
-	public WingType getWingType(Wing w) {
-		return w.wingType;
+	public WingType getWingType() {
+		return this.wingType;
 	}
 
-	public void setWingType(WingType wingType, Wing w) {
-		w.wingType = wingType;
+	public void setWingType(WingType wingType) {
+		this.wingType = wingType;
 	}
 	
 	public String toString() {

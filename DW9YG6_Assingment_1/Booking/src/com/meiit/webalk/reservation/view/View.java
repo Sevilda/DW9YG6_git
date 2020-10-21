@@ -1,24 +1,32 @@
 package com.meiit.webalk.reservation.view;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
-import com.meiit.webalk.reservation.Status;
 import com.meiit.webalk.reservation.domain.BookingPerson;
+import com.meiit.webalk.reservation.domain.Currency;
 import com.meiit.webalk.reservation.domain.Floor;
 import com.meiit.webalk.reservation.domain.Hotel;
+import com.meiit.webalk.reservation.domain.Reservation;
 import com.meiit.webalk.reservation.domain.Room;
 import com.meiit.webalk.reservation.domain.Wing;
-import com.meiit.webalk.reservation.service.Reservation;
 import com.meiit.webalk.reservation.service.ReservationService;
 
-//Where is the provided interface?
-public class View {
+public class View implements IView {
+	Scanner sc = new Scanner(System.in);
 
-	//Please implement this method this is not acceptable based on the documentation
-	public static BookingPerson readBookingPerson() {
-		return null;
+	public BookingPerson readBookingPerson() {
+		BookingPerson bp;
+		System.out.println("What is your name?");
+		String name = sc.nextLine().toString();
+		System.out.println("What is your account balance?");
+		int balance = Integer.parseInt(sc.nextLine());
+		System.out.println("What is your currency type?");
+		Currency curr = (Currency.valueOf(sc.nextLine().toUpperCase()));
+		bp = new BookingPerson(name, balance, curr);
+		printWelcomeMessage(bp);
+		printBalance(bp);
+		return bp;
 	}
 
 	public void printWelcomeMessage(BookingPerson bp) {
@@ -29,44 +37,62 @@ public class View {
 		System.out.println("Your current balance is " + bp.getBalance() + " " + bp.getCurrency() + ".");
 	}
 
-	//This should be in a helper class
-	public void printRooms(ArrayList<Hotel> hotels) {
+	public void printRooms(List<Hotel> hotels) {
+
+		System.out.println(
+				"Where would you like to book? \nChoose a number of the desired room, or press q to quit the selection.");
 		int i = 0;
 		for (Hotel h : hotels) {
 			for (Floor f : h.getFloorList()) {
-				// System.out.println(f.getFloorNumber(f));
-				for (Wing w : f.getWings(f)) {
-					// System.out.println(w.getWingType(w) +", "+ w.getRooms(w));
-					for (Room r : w.getRooms(w)) {
+				for (Wing w : f.getWings()) {
+					for (Room r : w.getRooms()) {
 						i++;
-						System.out.println(i + ", Hotel name: " + h.getName() + ", Floor number: " + f.getFloorNumber(f)
-								+ ", Wing: " + w.getWingType(w) + ", Room number: " + r.getNumber(r) + ", Beds: "
-								+ r.getBeds(r) + ", Room Price: " + r.getPrice(r));
+						System.out.println(i + ", Hotel name: " + h.getName() + ", Floor number: " + f.getFloorNumber()
+								+ ", Wing: " + w.getWingType() + ", Room number: " + r.getNumber() + ", Beds: "
+								+ r.getBeds() + ", Room Price: " + r.getPrice());
 					}
 				}
 			}
 		}
 	}
+//TODO
+	/*
+	 * if (attemptRes.getPrice(attemptRes)<=bp.getBalance()) { res = new
+	 * Reservation(hotels.get(0), bp.getCurrency(), attemptRes.getPrice(attemptRes),
+	 * attemptRes); view.printReservationSaved(res); //make reservation
+	 * res.setStatus(Status.valueOf("BOOKED"), res); reservations.add(res);
+	 * bp.setBalance(bp.getBalance()-attemptRes.getPrice(attemptRes)); } else
+	 * view.printNotEnoughBalance(bp); }
+	 */
 
-	// no Room class yet.
-	public Room selectRoom(ArrayList<Hotel> hotels, int chosen) {
-		Room selectedR=null;
-		int i=0;
-		for (Hotel h : hotels) {
-			for (Floor f : h.getFloorList()) {
-				for (Wing w : f.getWings(f)) {
-					for (Room r : w.getRooms(w)) {
-						i++; 
-						if (chosen == i) {
-							selectedR = r;
-							break;
+	public Room selectRoom(List<Hotel> hotels) {
+		Room room = null;
+
+		printRooms(hotels);
+		char c = sc.next().charAt(0);
+		if (c == 'q') {
+			System.out.println("Quit booking. ");
+			return null;
+		} else if (Character.isDigit(c)) {
+			int chosen = Integer.parseInt(String.valueOf(c));
+
+			int i = 0;
+			for (Hotel h : hotels) {
+				for (Floor f : h.getFloorList()) {
+					for (Wing w : f.getWings()) {
+						for (Room r : w.getRooms()) {
+							i++;
+							if (chosen == i) {
+								room = r;
+								break;
+							}
 						}
 					}
 				}
 			}
-		}
-		return selectedR;
 
+		}
+		return room;
 	}
 
 	public void printReservationSaved(ReservationService res) {
@@ -79,28 +105,18 @@ public class View {
 
 	}
 
-	//Please follow the documentation 
-	public void printCheckIn(ReservationService res) {
-		if (res.getStatus(res) == Status.valueOf("ACTIVE"))
-			//This is not part of the expected output
-			System.out.println("Ready to check in!");
-		else if (res.getStatus(res) == Status.valueOf("BOOKED"))
-			//This is not part of the expected output
-			System.out.println("Your check in will be available soon TM");
-
+	public void printCheckIn() {
+		System.out.println("Check In");
 	}
 
-	public void printCheckOut(BookingPerson bp, ReservationService res) {
-		//This is not part of the expected output
-		if (res.getStatus(res) == Status.valueOf("PROCESSED")) {
-			System.out.println("Your checkout has been processed. \n" + "Your new balance is " + bp.getBalance());
-		}
+	public void printCheckOut() {
+		System.out.println("Check out! \nSurprise, you are our 100th guest! You got a 10% refund \n");
 	}
 
-	public void PrintReservations(ArrayList<ReservationService> reservations) {
+	public void PrintReservations(List<Reservation> reservations) {
 		System.out.println("Your reservations: ");
-		for (ReservationService r : reservations)
+		for (Reservation r : reservations)
 			System.out.println(r.toString());
 	}
+
 }
-//ArrayList not part of the documentation

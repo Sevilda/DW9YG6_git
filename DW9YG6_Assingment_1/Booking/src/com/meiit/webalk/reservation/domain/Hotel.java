@@ -1,37 +1,37 @@
 package com.meiit.webalk.reservation.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Hotel {
 	
-	private static int id; 
-	private static String name;
-	private static String address;
-	private static int stars;
-	ArrayList<Floor> floorList;
+	private int id; 
+	private String name;
+	private String address;
+	private int stars;
+	List<Floor> floorList;
 	
-	public ArrayList<Floor> getFloorList() {
+	public List<Floor> getFloorList() {
 		return floorList;
 	}
 
-	public void setFloorList(ArrayList<Floor> floorList) {
+	public void setFloorList(List<Floor> floorList) {
 		this.floorList = floorList;
 	}
 
-	public static String getName() {
-		return name;
+	public String getName() {
+		return this.name;
 	}
 
-	public static void setName(String name) {
-		Hotel.name = name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Hotel(int id, String n, String a, int s, ArrayList<Floor> floors) {
-		Hotel.id=id;
-		name=n;
-		address=a;
-		stars=s;
-		floorList=floors;
+	public Hotel(int id, String n, String a, int s, List<Floor> floors) {
+		this.id=id;
+		this.name=n;
+		this.address=a;
+		this.stars=s;
+		this.floorList=floors;
 	}
 	
 	

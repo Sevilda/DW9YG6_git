@@ -1,35 +1,33 @@
 package com.meiit.webalk.reservation.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
-//How redundant is this?
 
 public class Floor {
 	private int floorNumber;
 	private int hotelId;
-	private ArrayList<Wing> wings;
+	private List<Wing> wings;
 	
-	public Floor (int fn, int hId, ArrayList<Wing> ws) {
+	public Floor (int fn, int hId, List<Wing> ws) {
 		floorNumber=fn;
 		hotelId=hId;
 		wings=ws;
 	}
 
-	public static ArrayList<Wing> getWings(Floor f) {
-		return f.wings;
+	public List<Wing> getWings() {
+		return this.wings;
 	}
 
-	public static void setWings(ArrayList<Wing> wings,Floor f) {
-		f.wings = wings;
+	public  void setWings(List<Wing> wings) {
+		this.wings = wings;
 	}
 
-	public static int getFloorNumber(Floor f) {
-		return f.floorNumber;
+	public int getFloorNumber() {
+		return this.floorNumber;
 	}
 
-	public static void setFloorNumber(int floorNumber, Floor f) {
-		f.floorNumber = floorNumber;
+	public void setFloorNumber(int floorNumber) {
+		this.floorNumber = floorNumber;
 	}
 	
 	public String toString () {
