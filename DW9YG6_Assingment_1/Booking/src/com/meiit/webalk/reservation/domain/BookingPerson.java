@@ -4,7 +4,6 @@ import java.util.Date;
 //Static is not need
 public class BookingPerson extends User {
 
-<<<<<<< HEAD
 	//missing field
 	private static int accountNumber; // bank number? id? //not id 
 	private static int balance; //Wrong type
@@ -14,14 +13,6 @@ public class BookingPerson extends User {
 	//What is this?? inheritence?? OOP??
 	private static String email;
 	private static String pw;
-=======
-	private String name;
-	private int accountNumber;
-	private int balance;
-	private Date birth;
-	private Currency curr;
-
->>>>>>> missing res, todos.
 
 	public BookingPerson(String n, int b, Currency c) {
 		setName(n);
