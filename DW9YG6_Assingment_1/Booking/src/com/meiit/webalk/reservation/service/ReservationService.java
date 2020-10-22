@@ -39,8 +39,9 @@ public class ReservationService implements IReservationService {
 		wingsNorth.add(new Wing(WingType.NORTH, rooms.subList(3, 6)));
 	
 
-		floors.add(new Floor(1, 1, wingsEast));
-		floors.add(new Floor(2, 1, wingsNorth));
+		floors.add(new Floor(1, wingsEast));
+		floors.add(new Floor(2, wingsEast));
+		floors.add(new Floor(2, wingsNorth));
 
 		hotels.add(new Hotel(1, "Hilton", "MiddleOf St. Nowh Ere 16.", 5, floors));
 		
@@ -76,7 +77,7 @@ public class ReservationService implements IReservationService {
 	public void saveReservation(Reservation reservation, View view) {
 		bp=bookingPersons.get(0);
 		reservations.add(reservation);
-		bp.setBalance(bp.getBalance().subtract(reservation.getRoom().getPrice()).multiply(BigDecimal.valueOf(0.9)));
+		bp.setBalance(bp.getBalance().subtract(reservation.getRoom().getPrice().multiply(BigDecimal.valueOf(0.9))));
 		view.printReservationSaved();
 	}
 

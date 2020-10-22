@@ -11,7 +11,6 @@ import com.meiit.webalk.reservation.domain.Hotel;
 import com.meiit.webalk.reservation.domain.Reservation;
 import com.meiit.webalk.reservation.domain.Room;
 import com.meiit.webalk.reservation.domain.Wing;
-import com.meiit.webalk.reservation.service.ReservationService;
 
 public class View implements IView {
 	Scanner sc = new Scanner(System.in);

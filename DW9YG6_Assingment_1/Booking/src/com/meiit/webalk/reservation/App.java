@@ -40,7 +40,7 @@ public class App {
 		Room r = null;
 		 do {
 			r = view.selectRoom(reservationService.findAllHotels());
-			if (r != null && reservationService.findBookingPerson().getBalance().compareTo(r.getPrice())>0) {
+			if (r != null && reservationService.findBookingPerson().getBalance().compareTo(r.getPrice())>=0) {
 				Reservation newReservation = new Reservation(reservationService.findBookingPerson().getName(), r);
 				reservationService.saveReservation(newReservation, view);
 			}
@@ -51,15 +51,19 @@ public class App {
 	}
 
 	public void checkIn() {
-		view.printCheckIn();
+		if (reservationService.findAllReservations().isEmpty()==false)
+			view.printCheckIn();
 	}
 
 	public void checkOut() {
+		if (reservationService.findAllReservations().isEmpty()==false) {
 		view.printCheckOut();
 		view.printBalance(reservationService.findBookingPerson());
+		}
 	}
 
 	public void reservationList() {
-		view.printReservations(reservationService.findAllReservations());
+		if (reservationService.findAllReservations().isEmpty()==false)
+			view.printReservations(reservationService.findAllReservations());
 	}
 }

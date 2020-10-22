@@ -5,12 +5,10 @@ import java.util.List;
 
 public class Floor {
 	private int floorNumber;
-	private int hotelId;
 	private List<Wing> wings;
 	
-	public Floor (int fn, int hId, List<Wing> ws) {
+	public Floor (int fn, List<Wing> ws) {
 		floorNumber=fn;
-		hotelId=hId;
 		wings=ws;
 	}
 
