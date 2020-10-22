@@ -23,16 +23,24 @@ public class ReservationService implements IReservationService {
 	public void initData() {
 		List<Room> rooms =new ArrayList<Room>();
 		List<Wing> wingsEast =new ArrayList<Wing>();
+		List<Wing> wingsNorth =new ArrayList<Wing>();
 		List<Floor> floors =new ArrayList<Floor>();
 		
 		rooms.add(0, new Room(1, 2, true, BigDecimal.valueOf(500), WingType.EAST));
-		rooms.add(0, new Room(2, 3, true, BigDecimal.valueOf(1200), WingType.EAST));
-		rooms.add(1, new Room(3, 4, false, BigDecimal.valueOf(1000), WingType.EAST));
+		rooms.add(1, new Room(2, 3, true, BigDecimal.valueOf(1200), WingType.EAST));
+		rooms.add(2, new Room(3, 4, false, BigDecimal.valueOf(1000), WingType.EAST));
 
-		wingsEast.add(new Wing(WingType.EAST, rooms));
+		rooms.add(3, new Room(4, 4, false, BigDecimal.valueOf(750), WingType.NORTH));
+		rooms.add(4, new Room(5, 3, true, BigDecimal.valueOf(1000), WingType.NORTH));
+		rooms.add(5, new Room(6, 4, true, BigDecimal.valueOf(1600), WingType.NORTH));
+		
+		//
+		wingsEast.add(new Wing(WingType.EAST, rooms.subList(0, 3)));
+		wingsNorth.add(new Wing(WingType.NORTH, rooms.subList(3, 6)));
+	
 
 		floors.add(new Floor(1, 1, wingsEast));
-		floors.add(new Floor(2, 1, wingsEast));
+		floors.add(new Floor(2, 1, wingsNorth));
 
 		hotels.add(new Hotel(1, "Hilton", "MiddleOf St. Nowh Ere 16.", 5, floors));
 		
@@ -67,12 +75,9 @@ public class ReservationService implements IReservationService {
 
 	public void saveReservation(Reservation reservation, View view) {
 		bp=bookingPersons.get(0);
-		if (reservation.getRoom().getPrice().compareTo(bp.getBalance())<0) {
 		reservations.add(reservation);
 		bp.setBalance(bp.getBalance().subtract(reservation.getRoom().getPrice()).multiply(BigDecimal.valueOf(0.9)));
 		view.printReservationSaved();
-		}
-		else view.printNotEnoughBalance(bp);
 	}
 
 }

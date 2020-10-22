@@ -58,9 +58,11 @@ public class View implements IView {
 	}
 
 	public Room selectRoom(List<Hotel> hotels) {
+		boolean done=false;
 		Room room = null;
 		printRooms(hotels);
 		char c = sc.next().charAt(0);
+		while (!done) {
 			if (c == 'q') {
 				System.out.println("Quit booking;");
 				return null;
@@ -69,7 +71,6 @@ public class View implements IView {
 				printRooms(hotels);
 				if (Character.isDigit(c)) {
 					int chosen = Integer.parseInt(String.valueOf(c));
-
 					int i = 0;
 					for (Hotel h : hotels) {
 						for (Floor f : h.getFloorList()) {
@@ -85,8 +86,8 @@ public class View implements IView {
 						}
 					}
 				}
-
 			}
+		}
 		return room;
 	}
 
