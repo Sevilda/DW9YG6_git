@@ -38,7 +38,7 @@ public class App {
 
 	public void book() {
 		Room r = null;
-		while (r==null) {
+		 do {
 			r = view.selectRoom(reservationService.findAllHotels());
 			if (r != null && reservationService.findBookingPerson().getBalance().compareTo(r.getPrice())>0) {
 				Reservation newReservation = new Reservation(reservationService.findBookingPerson().getName(), r);
@@ -46,9 +46,8 @@ public class App {
 			}
 			else if (r!=null && reservationService.findBookingPerson().getBalance().compareTo(r.getPrice())<0) {
 				view.printNotEnoughBalance(reservationService.findBookingPerson());
-				r=null;
 			}
-		}
+		}while (r!=null);
 	}
 
 	public void checkIn() {
