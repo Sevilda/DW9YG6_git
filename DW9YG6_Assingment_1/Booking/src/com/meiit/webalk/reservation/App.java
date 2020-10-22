@@ -1,13 +1,3 @@
-/*rooms.add(0, new Room(1, 2, true, 500, WingType.EAST));
-		rooms.add(1, new Room(6, 4, false, 1000, WingType.EAST));
-
-		wings.add(new Wing(WingType.EAST, rooms));
-
-		floors.add(new Floor(1, 1, wings));
-		floors.add(new Floor(2, 1, wings));
-
-		hotels.add(new Hotel(1, "Hilton", "MiddleOf St. Nowh Ere 16.", 5, floors));*/
-
 package com.meiit.webalk.reservation;
 
 import com.meiit.webalk.reservation.domain.Reservation;
@@ -29,16 +19,16 @@ public class App {
 			app.book();
 			app.checkIn();
 			app.checkOut();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	public App(ReservationService res, View view) {
-		this.reservationService = res;
+	public App(ReservationService reservationService, View view) {
+		this.reservationService = reservationService;
 		this.view = view;
+		reservationService.initData();
 	}
 
 	public void createBookingPerson() {
@@ -49,14 +39,13 @@ public class App {
 		Room r = null;
 		while (r == null) {
 			r = view.selectRoom(reservationService.findAllHotels());
+			System.out.println(r==null);
 			if (r != null) {
-				reservationService.saveReservation(new Reservation(reservationService.findBookingPerson().getName(), r));
-				view.printReservationSaved();
+				Reservation newReservation = new Reservation(reservationService.findBookingPerson().getName(), r);
+				reservationService.saveReservation(newReservation, view);
+				//TODO loop properly
 			}
-	
-			
-		}
-		;
+		};
 
 	}
 
@@ -66,6 +55,7 @@ public class App {
 
 	public void checkOut() {
 		view.printCheckOut();
+		view.printBalance(reservationService.findBookingPerson());
 	}
 
 }

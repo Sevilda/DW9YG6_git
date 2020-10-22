@@ -5,6 +5,7 @@ import java.util.List;
 import com.meiit.webalk.reservation.domain.BookingPerson;
 import com.meiit.webalk.reservation.domain.Hotel;
 import com.meiit.webalk.reservation.domain.Reservation;
+import com.meiit.webalk.reservation.view.View;
 
 public interface IReservationService {
 	
@@ -12,7 +13,7 @@ public interface IReservationService {
 	
 	public BookingPerson findBookingPerson();
 	
-	public void saveReservation (Reservation reservation);
+	public void saveReservation (Reservation reservation, View view);
 	
 	public List<Hotel> findAllHotels();
 	
