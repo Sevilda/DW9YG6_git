@@ -41,7 +41,7 @@ public class Reservation {
 
 	public String toString() {
 		SimpleDateFormat sdt = new SimpleDateFormat("yyyy-MM-dd");
-		return "Your reservation has been set for " + sdt.format(fromDate) + ", in room " + room.getNumber();
+		return "Your reservation is set for " + sdt.format(fromDate) + ", in room " + room.getNumber() + ", under the name of " +getName();
 	}
 
 

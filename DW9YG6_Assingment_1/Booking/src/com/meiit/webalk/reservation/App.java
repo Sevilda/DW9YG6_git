@@ -17,6 +17,7 @@ public class App {
 			App app = new App(new ReservationService(), new View());
 			app.createBookingPerson();
 			app.book();
+			app.reservationList();
 			app.checkIn();
 			app.checkOut();
 		} catch (Exception e) {
@@ -37,16 +38,11 @@ public class App {
 
 	public void book() {
 		Room r = null;
-		while (r == null) {
 			r = view.selectRoom(reservationService.findAllHotels());
-			System.out.println(r==null);
 			if (r != null) {
 				Reservation newReservation = new Reservation(reservationService.findBookingPerson().getName(), r);
 				reservationService.saveReservation(newReservation, view);
-				//TODO loop properly
 			}
-		};
-
 	}
 
 	public void checkIn() {
@@ -58,4 +54,7 @@ public class App {
 		view.printBalance(reservationService.findBookingPerson());
 	}
 
+	public void reservationList() {
+		view.printReservations(reservationService.findAllReservations());
+	}
 }

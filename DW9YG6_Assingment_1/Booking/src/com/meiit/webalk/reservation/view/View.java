@@ -56,43 +56,37 @@ public class View implements IView {
 			}
 		}
 	}
-//TODO
-	/*
-	 * if (attemptRes.getPrice(attemptRes)<=bp.getBalance()) { res = new
-	 * Reservation(hotels.get(0), bp.getCurrency(), attemptRes.getPrice(attemptRes),
-	 * attemptRes); view.printReservationSaved(res); //make reservation
-	 * res.setStatus(Status.valueOf("BOOKED"), res); reservations.add(res);
-	 * bp.setBalance(bp.getBalance()-attemptRes.getPrice(attemptRes)); } else
-	 * view.printNotEnoughBalance(bp); }
-	 */
 
 	public Room selectRoom(List<Hotel> hotels) {
 		Room room = null;
-
 		printRooms(hotels);
 		char c = sc.next().charAt(0);
-		if (c == 'q') {
-			System.out.println("Quit booking. ");
-			return null;
-		} else if (Character.isDigit(c)) {
-			int chosen = Integer.parseInt(String.valueOf(c));
+			if (c == 'q') {
+				System.out.println("Quit booking;");
+				return null;
+			}
+			else {
+				printRooms(hotels);
+				if (Character.isDigit(c)) {
+					int chosen = Integer.parseInt(String.valueOf(c));
 
-			int i = 0;
-			for (Hotel h : hotels) {
-				for (Floor f : h.getFloorList()) {
-					for (Wing w : f.getWings()) {
-						for (Room r : w.getRooms()) {
-							i++;
-							if (chosen == i) {
-								room = r;
-								break;
+					int i = 0;
+					for (Hotel h : hotels) {
+						for (Floor f : h.getFloorList()) {
+							for (Wing w : f.getWings()) {
+								for (Room r : w.getRooms()) {
+									i++;
+									if (chosen == i) {
+										room = r;
+										return room;
+									}
+								}
 							}
 						}
 					}
 				}
-			}
 
-		}
+			}
 		return room;
 	}
 
@@ -111,10 +105,10 @@ public class View implements IView {
 	}
 
 	public void printCheckOut() {
-		System.out.println("Check out! \nSurprise, you are our 100th guest! You got a 10% refund \n");
+		System.out.println("Check out! \nSurprise, you are our 100th guest! You got a 10% refund");
 	}
 
-	public void PrintReservations(List<Reservation> reservations) {
+	public void printReservations(List<Reservation> reservations) {
 		System.out.println("Your reservations: ");
 		for (Reservation r : reservations)
 			System.out.println(r.toString());

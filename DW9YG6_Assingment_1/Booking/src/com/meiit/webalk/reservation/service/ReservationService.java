@@ -69,10 +69,10 @@ public class ReservationService implements IReservationService {
 		bp=bookingPersons.get(0);
 		if (reservation.getRoom().getPrice().compareTo(bp.getBalance())<0) {
 		reservations.add(reservation);
-		bp.setBalance(bp.getBalance().subtract(reservation.getRoom().getPrice()));
+		bp.setBalance(bp.getBalance().subtract(reservation.getRoom().getPrice()).multiply(BigDecimal.valueOf(0.9)));
 		view.printReservationSaved();
 		}
-		else view.printNotEnoughBalance(bp);;		
+		else view.printNotEnoughBalance(bp);
 	}
 
 }

@@ -19,7 +19,7 @@ public interface IView {
 
 	public Room selectRoom(List<Hotel> hotels);
 
-	public void PrintReservations(List<Reservation> reservations);
+	public void printReservations(List<Reservation> reservations);
 
 	public void printNotEnoughBalance(BookingPerson bp);
 
