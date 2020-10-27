@@ -18,6 +18,7 @@ public class ReservationService implements IReservationService {
 	private BookingPerson bp;
 	private List<Hotel> hotels=new ArrayList<Hotel>();
 	private List<Reservation> reservations=new ArrayList<Reservation>();
+	//Not required but not problem, look after YAGNI 
 	private List<BookingPerson> bookingPersons=new ArrayList<BookingPerson>();
 	
 	public void initData() {
@@ -78,6 +79,7 @@ public class ReservationService implements IReservationService {
 		bp=bookingPersons.get(0);
 		reservations.add(reservation);
 		bp.setBalance(bp.getBalance().subtract(reservation.getRoom().getPrice().multiply(BigDecimal.valueOf(0.9))));
+		//Service didn't call view! documentation
 		view.printReservationSaved();
 	}
 
