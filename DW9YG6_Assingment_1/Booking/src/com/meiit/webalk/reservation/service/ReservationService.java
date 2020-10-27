@@ -53,6 +53,7 @@ public class ReservationService implements IReservationService {
 	}
 	
 	public void checkOut (Reservation reservation) {
+		//Refund should be calculated and added to the balance here
 		reservation.setActive(false);
 		reservation.setProcessed(true);
 	}
