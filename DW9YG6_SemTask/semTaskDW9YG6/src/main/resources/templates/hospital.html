@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
 <script type="text/javascript" src="../static/js/jquery-3.5.1.js"
@@ -12,11 +13,23 @@
 	<div class="header">
 		<table class="center">
 			<tr>
+
 				<td rowspan="3"><a href="/"><img
-						src="img/hospital_main.jpg" height="150px" /></a></td>
+						th:src="@{/img/hospital_main.jpg}"
+						src="../static/img/hospital_main.jpg" height="150px" /></a></td>
 				<td><h1>Imaginary Hospital</h1></td>
 			<tr>
-				<td>Administer rooms</td>
+				<td><a href="/list">Administer rooms</a></td>
+			</tr>
+			<tr>
+				<td>
+					<div sec:authorize="hasRole('ADMIN')">
+						<form th:action="@{/logout}" method="post">
+							<button type="submit">Log Out</button>
+						</form>
+					</div>
+				</td>
+
 			</tr>
 		</table>
 	</div>
@@ -52,7 +65,8 @@
 					</td>
 					<td>
 						<form th:action="@{/display/{id}(id=${hospital.roomID})}">
-							<button type="submit" id="display" value="Display">Display Details</button>
+							<button type="submit" id="display" value="Display">Display
+								Details</button>
 						</form>
 					</td>
 
@@ -67,5 +81,6 @@
 		</div>
 
 	</div>
+	<div class="ani">E. Vadon</div>
 </body>
 </html>

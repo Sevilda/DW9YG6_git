@@ -7,7 +7,7 @@
 	th:src="@{/js/jquery-3.5.1.js}"></script>
 <script type="text/javascript" src="../static/js/script.js"
 	th:src="@{/js/script.js}"></script>
-<title>Hospital room details</title>
+<title>Main page</title>
 </head>
 <body>
 	<div class="header">
@@ -16,9 +16,7 @@
 				<td rowspan="3"><a href="/"><img th:src="@{/img/hospital_main.jpg}"
 						src="../static/img/hospital_main.jpg" height="150px" /></a></td>
 				<td><h1>Imaginary Hospital</h1></td>
-
-
-				<tr>
+			<tr>
 				<td><a href="/list">Administer rooms</a></td>
 			</tr>
 			<tr>
@@ -33,33 +31,8 @@
 			</tr>
 		</table>
 	</div>
-<div class="content">
-					<table class="center" id="hospitalTable" border="5px solid white">
-			<thead>
-				<tr>
-					<th>Number</th>
-					<th>Floor</th>
-					<th>Ward</th>
-					<th>Patient</th>
-					<th>Doctor</th>
-					<th>Admission Date</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td th:text="${hospital.roomID}"></td>
-					<td th:text="${hospital.floor}"></td>
-					<td th:text="${hospital.ward}"></td>
-					<td th:text="${hospital.patientName}"></td>
-					<td th:text="${hospital.doctorName}"></td>
-					<td th:text="${hospital.admissionDate}"></td>
-				</tr>
-			</tbody>
-		</table>
-		</div>
-		<div class="ani">E. Vadon</div>
-		
-			</body>
-		</html>
-		
+	<div class="content"> <h1>Welcome to the main page</h1></div>
+	<div class="ani">E. Vadon</div>
 
+</body>
+</html>

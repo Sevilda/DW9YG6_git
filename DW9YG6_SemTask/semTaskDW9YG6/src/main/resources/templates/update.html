@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
 <script type="text/javascript" src="../static/js/jquery-3.5.1.js"
 	th:src="@{/js/jquery-3.5.1.js}"></script>
 <script type="text/javascript" src="../static/js/script.js"
-	th:src="@{/js/script.js}"></script></head>
+	th:src="@{/js/script.js}"></script>
+<title>Update hospital room</title>
+</head>
 <body>
 	<div class="header">
 		<table class="center">
@@ -16,9 +19,18 @@
 			<tr>
 				<td><a href="/list">Administer rooms</a></td>
 			</tr>
+			<tr>
+				<td>
+					<div sec:authorize="hasRole('ADMIN')">
+						<form th:action="@{/logout}" method="post">
+							<button type="submit">Log Out</button>
+						</form>
+					</div>
+				</td>
+
+			</tr>
 		</table>
 	</div>
-
 	<div class="content">
 	
  <h1>Update <span th:text="${hospital.roomID}"></span></h1>
@@ -66,6 +78,6 @@
 		</div>
 	</div>
 	
-	
+	<div class="ani">E. Vadon</div>
 </body>
 </html>
