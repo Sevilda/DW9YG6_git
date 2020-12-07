@@ -1,12 +1,22 @@
 html {
+	background-image: url(../img/hospital_bg.jpg);
+	background-size:cover;
     color: rgb(80, 160, 255);
     text-shadow: 3px 5px 2px rgb(0, 30, 70);
 }
 
-body {
-    background: rgba(0,  0, 0, 0.8);
+.content {
+	position: static;
+    background-color: rgba(0,  0, 0, 0.6);
+    margin-left: 5%;
+    margin-right: 5%;
     padding: 5%;
     color: rgb(80, 160, 255);
+}
+
+.header {
+	position:static;
+	height:10%;
 }
 
 
@@ -15,6 +25,7 @@ img {
     border-radius: 3px;
     opacity: 1;
 }
+
 
 img:hover {
     transition: .5s ease;
@@ -26,17 +37,20 @@ table {
     top: auto;
     border-collapse:collapse;
     table-layout: fixed;
+    background-color: black;
 }
-
 
 td {
     text-align: center;
     align-items: center;
-    width: 33%;
     padding: 10px;
 }
+.selected {
+	background-color: grey;
+}
 
-td.sty {
+
+th {
     border-bottom: 5px solid white;
 }
 
@@ -54,20 +68,35 @@ a {
    color: rgb(80, 160, 255);
 }
 
-
 .center {
   margin-left: auto;
   margin-right: auto;
 }
 
-
-.nc {
-    position:relative;
-    color: rgb(80, 160, 255);
-    font-size: 20px;
-    text-shadow: 3px 3px 3px black;
-
+.hidden {
+	display: none;
 }
+
+.buttonDiv {
+	text-align:center;
+	margin-left: 20%;
+	margin-right: 20%;
+	padding:10px;
+}
+
+.formDiv {
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.formTable {
+	border-collapse: collapse;
+}
+
+.formTable td {
+	border: none;
+	border-bottom:2px solid grey;
+} 
 
 
 .ani {position: relative;
@@ -75,7 +104,7 @@ a {
     animation-duration: 60s;
     animation-iteration-count: infinite;
     animation-timing-function:ease-in-out;
-    color: white;}
+    color: black;}
 @keyframes roll 	
    {0%   {left:0px}
     50%  {left:75%}

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
+<script type="text/javascript" src="../static/js/jquery-3.5.1.js"
+	th:src="@{/js/jquery-3.5.1.js}"></script>
+<script type="text/javascript" src="../static/js/script.js"
+	th:src="@{/js/script.js}"></script></head>
+<body>
+	<div class="header">
+		<table class="center">
+			<tr>
+				<td rowspan="3"><a href="/"><img th:src="@{/img/hospital_main.jpg}"
+						src="../static/img/hospital_main.jpg" height="150px" /></a></td>
+				<td><h1>Imaginary Hospital</h1></td>
+			<tr>
+				<td><a href="/list">Administer rooms</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="content">
+	
+ <h1><span th:text="${Message}"></span></h1>
+	
+<div class="formDiv">
+	<form action="#" th:action="@{/new}" method="POST" th:object="${hospital}">
+		<table class="center" id="formTable">
+		<tbody>
+			<tr>
+				<td>Room number</td>
+				<td><input type="number" min="11" max="59" th:field="*{roomID}"/></td>
+			</tr>
+			<tr>
+				<td>Ward</td>
+				<td><select th:field="*{ward}">
+					<option value="CCU">CCU</option>
+					<option value="ICU">ICU</option>
+					<option value="Pediatrics">Pediatrics </option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Floor</td>
+				<td><input type="number" min="1" max="4" th:field="*{floor}"></td>
+			</tr>
+			<tr>
+				<td>Patient name</td>
+				<td><input type="text" th:field="*{patientName}"></td>
+			</tr>
+			<tr>
+				<td>Doctor name</td>
+				<td><input type="text" th:field="*{doctorName}"></td>
+			</tr>
+			<tr>
+				<td>Admission date</td>
+				<td><input type="date" th:field="*{admissionDate}" required="required" ></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" id="ok" value="Add new room">
+				</td>
+			</tr>
+		</tbody>
+		</table>
+		</form>
+		</div>
+	</div>
+	
+	
+</body>
+</html>
